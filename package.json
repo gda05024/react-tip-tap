@@ -94,8 +94,9 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "build": "pnpm build:lib && pnpm --dir ./playground run build",
-    "build:lib": "vite build && pnpm modify-css",
+    "build": "pnpm build:lib && pnpm --dir ./playground run build && pnpm build:dist",
+    "build:lib": "vite build",
+    "build:dist": "mkdir -p dist && cp -r playground/dist/* dist/",
     "build:lib:dev": "vite build  --mode development --watch",
     "docs:dev": "pnpm --parallel --filter docs... dev",
     "docs:build": "pnpm --filter docs... build",
